@@ -46,4 +46,8 @@ public class vehicleCtl : MonoBehaviour {
 	public void brake() {
 		speed -= brakeSpeed;
 	}
+	void onCollision() {
+		Debug.Log("dead");
+		objSelf.transform.position = new Vector3(0, 0, 0);
+	}
 }
