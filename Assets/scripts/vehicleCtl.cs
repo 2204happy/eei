@@ -12,10 +12,14 @@ public class vehicleCtl : MonoBehaviour {
 	public float brakeSpeed;
 	public GameObject childObj;
 	private float speed;
+	private Vector3 initPos;
+	private Quaternion initRot;
 	// Use this for initialization
 	void Start () {
 		objSelf = this.gameObject;
 		speed = 0;
+		initPos = objSelf.transform.position;
+		initRot = objSelf.transform.rotation;
 	}
 
 	// Update is called once per frame
@@ -27,7 +31,6 @@ public class vehicleCtl : MonoBehaviour {
 			speed = 0;
 		}
         
-        Debug.Log(speed);
 		childObj.transform.localPosition = new Vector3(0, speed, 0);
 		objSelf.transform.position = childObj.transform.position;
 		speed -= friction;
@@ -46,8 +49,13 @@ public class vehicleCtl : MonoBehaviour {
 	public void brake() {
 		speed -= brakeSpeed;
 	}
-	void onCollision() {
-		Debug.Log("dead");
-		objSelf.transform.position = new Vector3(0, 0, 0);
+	void OnTriggerStay2D(Collider2D col) {
+		resetVehicle();
+
+	}
+	public void resetVehicle() {
+		objSelf.transform.position = initPos;
+        speed = 0;
+        objSelf.transform.rotation = initRot;
 	}
 }
