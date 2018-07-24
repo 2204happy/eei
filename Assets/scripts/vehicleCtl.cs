@@ -21,7 +21,7 @@ public class vehicleCtl : MonoBehaviour {
 		speed = 0;
 		initPos = objSelf.transform.position;
 		initRot = objSelf.transform.rotation;
-		segment = 0
+		segment = 0;
 	}
 
 	// Update is called once per frame
