@@ -11,6 +11,7 @@ public class vehicleCtl : MonoBehaviour {
 	public float acceleration;
 	public float brakeSpeed;
 	public GameObject childObj;
+	private int segment;
 	private float speed;
 	private Vector3 initPos;
 	private Quaternion initRot;
@@ -20,6 +21,7 @@ public class vehicleCtl : MonoBehaviour {
 		speed = 0;
 		initPos = objSelf.transform.position;
 		initRot = objSelf.transform.rotation;
+		segment = 0
 	}
 
 	// Update is called once per frame
@@ -52,6 +54,11 @@ public class vehicleCtl : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col) {
 		resetVehicle();
 
+	}
+	void OnTriggerEnter2D(Collider2D col) {
+		GameObject objCol = col.gameObject;
+		segment = objCol.GetComponent<checkpointNum>().checkPoint;
+		Debug.Log(segment);
 	}
 	public void resetVehicle() {
 		objSelf.transform.position = initPos;
