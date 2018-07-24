@@ -222,7 +222,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.514303
+      value: 10.927
       objectReference: {fileID: 0}
     - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -254,7 +254,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1252875377083438, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
       propertyPath: m_Name
-      value: CheckPoint (2)
+      value: CheckPoint 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 174.20476
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
@@ -679,6 +683,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &662606637
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1854331795}
+    m_Modifications:
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -13.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.5238341
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &662606638 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e,
+    type: 2}
+  m_PrefabInternal: {fileID: 662606637}
 --- !u!1 &791599987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1309,7 @@ Transform:
   - {fileID: 1389293891}
   - {fileID: 1972367649}
   - {fileID: 50335979}
+  - {fileID: 662606638}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1274,7 +1326,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.8
+      value: 9.0875
       objectReference: {fileID: 0}
     - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1310,7 +1362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4021538427717394, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
       propertyPath: m_LocalScale.y
-      value: -3.8
+      value: -114.57354
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40841c41da7c7024db2390f4fb11468e, type: 2}
