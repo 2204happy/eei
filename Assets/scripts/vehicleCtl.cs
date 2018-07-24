@@ -49,7 +49,7 @@ public class vehicleCtl : MonoBehaviour {
 	public void brake() {
 		speed -= brakeSpeed;
 	}
-	void OnTriggerStay2D(Collider2D col) {
+	void OnCollisionEnter2D(Collision2D col) {
 		resetVehicle();
 
 	}
