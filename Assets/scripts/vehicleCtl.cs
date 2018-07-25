@@ -57,7 +57,10 @@ public class vehicleCtl : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D col) {
 		GameObject objCol = col.gameObject;
-		segment = objCol.GetComponent<checkpointNum>().checkPoint;
+		if (objCol.GetComponent<checkpointNum>().checkPoint == segment + 1)
+		{
+			segment += 1;
+		}
 		Debug.Log(segment);
 	}
 	public void resetVehicle() {
