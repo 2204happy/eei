@@ -11,9 +11,10 @@ public class raycast : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		RaycastHit2D hit = Physics2D.Raycast(transform.localPosition, transform.TransformPoint(transform.forward));
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformPoint(Vector2.up)-transform.position);
+        //transform.TransformPoint(new Vector3(0, 1, 0)));
 		Debug.Log(hit.collider);
 		Debug.Log(hit.distance);
-		Debug.DrawLine(transform.position, transform.TransformPoint(transform.forward*hit.distance),Color.green);
+		Debug.DrawLine(transform.position, transform.TransformPoint(new Vector3(0,hit.distance/2,0)),Color.green);
 	}
 }
