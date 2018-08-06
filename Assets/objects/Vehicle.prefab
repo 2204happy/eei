@@ -328,6 +328,12 @@ MonoBehaviour:
   acceleration: 0.005
   brakeSpeed: 0.0025
   childObj: {fileID: 1461484525156564}
+  segment: 0
+  dead: 0
+  newSeg: 0
+  startTime: 0
+  fitness: 0
+  checkpointAmnt: 16
 --- !u!114 &114561851361722662
 MonoBehaviour:
   m_ObjectHideFlags: 1
