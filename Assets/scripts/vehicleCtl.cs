@@ -24,6 +24,8 @@ public class vehicleCtl : MonoBehaviour {
     public float fitness;
 	public int checkpointAmnt;
 	public GameObject fitnessText;
+	public bool player;
+	private bool started;
 	// Use this for initialization
 	void Start () {
 		objSelf = this.gameObject;
@@ -37,6 +39,7 @@ public class vehicleCtl : MonoBehaviour {
 		fitTime = 0;
 		fitSpeed = 0;
 		fitness = 0;
+		started = false;
 	}
 
 	// Update is called once per frame
@@ -47,7 +50,9 @@ public class vehicleCtl : MonoBehaviour {
 		if (speed < 0) {
 			speed = 0;
 		}
-        
+		if (!started) {
+			startTime = Time.time;
+		}
 		childObj.transform.localPosition = new Vector3(0, speed, 0);
 		objSelf.transform.position = childObj.transform.position;
 		speed -= friction;
@@ -66,17 +71,32 @@ public class vehicleCtl : MonoBehaviour {
 	}
 	public void turnLeft() {
 		objSelf.transform.Rotate(new Vector3(0,0,turnModif));
+		if(!started) {
+			started = true;
+		}
 	}
 
     public void turnRight()
     {
         objSelf.transform.Rotate(new Vector3(0, 0, -turnModif));
+        if (!started)
+        {
+            started = true;
+        }
     }
 	public void accelerate() {
 		speed += acceleration;
+        if (!started)
+        {
+            started = true;
+        }
 	}
 	public void brake() {
 		speed -= brakeSpeed;
+        if (!started)
+        {
+            started = true;
+        }
 	}
 	void OnCollisionEnter2D(Collision2D col) {
 		dead = true;
@@ -98,6 +118,7 @@ public class vehicleCtl : MonoBehaviour {
         {
             segment = 0;
 			startTime = Time.time;
+			started = false;
         }
 		dead = false;
 		newSeg = false;
