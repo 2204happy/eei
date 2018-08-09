@@ -64,6 +64,7 @@ public class vehicleCtl : MonoBehaviour {
             fitSpeed = fitDist / fitTime;
             fitness = fitSpeed * fitDist * fitDist;
 			fitnessText.GetComponent<updateFitnessDisp>().updateDisp(fitness);
+			writetofile.append(fitness.ToString(),"_fitnessScores");
             Debug.Log(fitness);
 			resetVehicle();
 			dead = true;

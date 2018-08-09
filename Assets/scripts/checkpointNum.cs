@@ -13,6 +13,7 @@ public class checkpointNum : MonoBehaviour {
 	private float fitTime;
 	private float fitSpeed;
 	public float fitness;
+	private bool dontRecord;
 	private GameObject fitnessText;
 	void Start() {
 		coll = this.GetComponent<Collider2D>();
@@ -20,6 +21,7 @@ public class checkpointNum : MonoBehaviour {
 	}
 	void Update()
 	{
+		dontRecord = false;
 		if (vehicle.GetComponent<vehicleCtl>().newSeg && vehicle.GetComponent<vehicleCtl>().segment == checkPoint-1)
 		{
 			Debug.Log("ENTERED SEGMENT");
@@ -36,6 +38,17 @@ public class checkpointNum : MonoBehaviour {
 			fitness = fitSpeed * fitDist*fitDist;
 			fitnessText.GetComponent<updateFitnessDisp>().updateDisp(fitness);
 			Debug.Log(fitness);
+			if((fitness > 100 && checkPoint < 6) || fitness < 0) {
+				dontRecord = true;
+				Debug.Log("NOT RECORDING VALUE");
+			}
+			if (!dontRecord)
+			{
+				writetofile.append(fitness.ToString(), "_fitnessScores");
+			}
+			else {
+				writetofile.append("null", "_fitnessScores");
+			}
 		}
 		if (vehicle.GetComponent<vehicleCtl>().segment == checkPoint - 1)
         {
