@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &50600158
 Transform:
   m_ObjectHideFlags: 0
@@ -1624,6 +1624,11 @@ Prefab:
       propertyPath: evolutionManager
       value: 
       objectReference: {fileID: 50600160}
+    - target: {fileID: 114756228823102816, guid: eb5764da844bd45aead0b00bf9543de4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5764da844bd45aead0b00bf9543de4, type: 2}
   m_IsPrefabParent: 0

@@ -61,12 +61,13 @@ public class vehicleCtl : MonoBehaviour {
 		objSelf.transform.position = childObj.transform.position;
 		speed -= friction;
 		if(checkpointAmnt == segment) {
-			fitDist = checkpointAmnt;
+			fitDist = 9*checkpointAmnt;
             fitTime = Time.time - startTime;
             //Debug.Log(fitDist);
             //Debug.Log(fitTime);
             fitSpeed = fitDist / fitTime;
-            fitness = fitSpeed * fitDist * fitDist;
+			fitness = fitSpeed * fitDist * fitDist * fitDist;
+			fitness = fitness / 9;
 			fitnessText.GetComponent<updateFitnessDisp>().updateDisp(fitness);
 			writetofile.append(fitness.ToString(),"_fitnessScores");
             Debug.Log(fitness);

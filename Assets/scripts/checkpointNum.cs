@@ -31,15 +31,17 @@ public class checkpointNum : MonoBehaviour {
 			if(fitDist < 0) {
 				fitDist = 0;
 			}
-			fitDist = fitDist + checkPoint-1;
+			fitDist = fitDist / 9;
+			fitDist = fitDist + 9*(checkPoint-1);
 			fitTime = Time.time - vehicle.GetComponent<vehicleCtl>().startTime;
 			//Debug.Log(fitDist);
 			//Debug.Log(fitTime);
 			fitSpeed = fitDist/fitTime;
-			fitness = fitSpeed * fitDist * fitDist;
+			fitness = fitSpeed * fitDist * fitDist * fitDist;
 			if(fitness < 0) {
 				fitness = 0;
 			}
+			fitness = fitness / 9;
 			Debug.Log(fitness);
 			fitnessText.GetComponent<updateFitnessDisp>().updateDisp(fitness);
 			writetofile.append(fitness.ToString(), "_fitnessScores");
