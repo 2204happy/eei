@@ -25,4 +25,13 @@ public class writetofile : MonoBehaviour
 		}
 		return _input;
 	}
+	public static string read(string _file_path = "/Files/Output.txt")
+    {
+        using (StreamReader inputFile = new StreamReader(Application.dataPath + _file_path))
+        {
+			string data = inputFile.ReadToEnd();
+			return data;
+        }
+        
+    }
 }

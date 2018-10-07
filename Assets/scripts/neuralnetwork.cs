@@ -16,6 +16,14 @@ public class neuralnetwork : MonoBehaviour {
 	public float turnThreshold;
 	public float maxMinWeight;
 	public float maxMinBias;
+	public float maxMinWeightChangeSmall;
+	public float maxMinWeightChangeLarge;
+	public float maxMinBiasChangeSmall;
+	public float maxMinBiasChangeLarge;
+	public float weightChangeChance;
+	public float largeWeightChangeChance;
+	public float biasChangeChance;
+	public float largeBiasChangeChance;
 	public updateFitnessDisp fitnessDisp;
 	private float[] neuronLayer1Biases = new float[32];
 	private float[] neuronLayer2Biases = new float[32];
@@ -68,6 +76,106 @@ public class neuralnetwork : MonoBehaviour {
 			upto += 1;
 		}
 	}
+
+	public float modifBias(float origBias)
+	{
+		if (Random.Range(0f, 1f) <= biasChangeChance)
+		{
+			if (Random.Range(0f, 1f) <= largeBiasChangeChance)
+			{
+				origBias += Random.Range(-maxMinBiasChangeLarge, maxMinBiasChangeLarge);
+			}
+			else
+			{
+				origBias += Random.Range(-maxMinBiasChangeSmall, maxMinBiasChangeSmall);
+			}
+			if (origBias > maxMinBias)
+			{
+				origBias = maxMinBias;
+			}
+			else if (origBias < -maxMinBias)
+			{
+				origBias = -maxMinBias;
+			}
+			return origBias;
+		}
+		else {
+			return origBias;
+		}
+
+	}
+
+	public float modifWeight(float origWeight)
+    {
+		if (Random.Range(0f, 1f) <= weightChangeChance)
+        {
+			if (Random.Range(0f, 1f) <= largeWeightChangeChance)
+            {
+				origWeight += Random.Range(-maxMinWeightChangeLarge, maxMinWeightChangeLarge);
+            }
+            else
+            {
+				origWeight += Random.Range(-maxMinWeightChangeSmall, maxMinWeightChangeSmall);
+            }
+			if (origWeight > maxMinWeight)
+            {
+				origWeight = maxMinWeight;
+            }
+			else if (origWeight < -maxMinWeight)
+            {
+				origWeight = -maxMinWeight;
+            }
+			return origWeight;
+        }
+        else
+        {
+			return origWeight;
+        }
+
+    }
+
+	public void ChangeNetwork()
+    {
+		Debug.Log("is this running?");
+        upto = 0;
+        while (upto < layer1amnt)
+        {
+			neuronLayer1Biases[upto] = modifBias(neuronLayer1Biases[upto]);
+            upto2 = 0;
+            while (upto2 < 5)
+            {
+				neuronLayer1Weights[upto,upto2] = modifWeight(neuronLayer1Weights[upto, upto2]);
+                upto2 += 1;
+            }
+            upto += 1;
+        }
+        upto = 0;
+        while (upto < layer2amnt)
+        {
+			neuronLayer2Biases[upto] = modifBias(neuronLayer2Biases[upto]);
+            upto2 = 0;
+            while (upto2 < layer1amnt)
+            {
+				neuronLayer2Weights[upto, upto2] = modifWeight(neuronLayer2Weights[upto, upto2]);
+                upto2 += 1;
+            }
+            upto += 1;
+        }
+        upto = 0;
+        while (upto < 4)
+        {
+			outputLayerBiases[upto] = modifBias(outputLayerBiases[upto]);
+            upto2 = 0;
+            while (upto2 < layer2amnt)
+            {
+				outputLayerWeights[upto,upto2] = modifWeight(outputLayerWeights[upto, upto2]);
+                upto2 += 1;
+            }
+            upto += 1;
+        }
+    }
+
+
 	public void LoadNetwork(string[] inputFile)
     {
         upto = 0;

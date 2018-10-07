@@ -267,6 +267,14 @@ MonoBehaviour:
   turnThreshold: 0.75
   maxMinWeight: 5
   maxMinBias: 5
+  maxMinWeightChangeSmall: 1
+  maxMinWeightChangeLarge: 10
+  maxMinBiasChangeSmall: 1
+  maxMinBiasChangeLarge: 10
+  weightChangeChance: 0.2
+  largeWeightChangeChance: 0.4
+  biasChangeChance: 0.2
+  largeBiasChangeChance: 0.4
   fitnessDisp: {fileID: 1895085072}
 --- !u!114 &50600160
 MonoBehaviour:
@@ -279,7 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4d5360251f0499abd03dfe349c15c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amntPerGen: 10
+  amntPerGen: 24
+  currGen: 0
+  uptoInGen: 0
   neuralNetwork: {fileID: 50600159}
   bestScore: 0
   bestScorer: 0

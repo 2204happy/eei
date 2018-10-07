@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.IO;
 
 public class evolutionManager : MonoBehaviour {
 	public int amntPerGen;
-	private int currGen;
-	private int uptoInGen;
+	public int currGen;
+	public int uptoInGen;
 	public neuralnetwork neuralNetwork;
 	public float bestScore;
 	public int bestScorer;
@@ -32,6 +33,7 @@ public class evolutionManager : MonoBehaviour {
 		string saveDir = "/networks/gen"+currGen.ToString()+"_try"+uptoInGen.ToString();
 		neuralNetwork.saveNetandFit(saveDir);
 		if(fitnessDisp.fitness > bestScore) {
+			bestScore = fitnessDisp.fitness;
 			bestScorer = uptoInGen;
 		}
 	}
@@ -51,13 +53,13 @@ public class evolutionManager : MonoBehaviour {
 		}
 		if(currGen != 0) {
 			string loadDir = "/networks/gen" + (currGen-1).ToString() + "_try" + bestPrevScorer.ToString();
-			//string loadDir = "networks/gen0_try0";
-            
-			string inFile = File.ReadAllText(loadDir);
+			//string loadDir = "/networks/gen0_try0";
+
+			string inFile = writetofile.read(loadDir);
 			string[] inFileArray = inFile.Split(char.Parse("\n"));
 			//string[] inFile = {"a","b","c"};
 			neuralNetwork.LoadNetwork(inFileArray);
-            //modify
+			neuralNetwork.ChangeNetwork();
 		}
 
 	}

@@ -43,7 +43,7 @@ public class vehicleCtl : MonoBehaviour {
 		fitTime = 0;
 		fitSpeed = 0;
 		fitness = 0;
-		started = false;
+		started = true;
 	}
 
 	// Update is called once per frame
@@ -72,6 +72,11 @@ public class vehicleCtl : MonoBehaviour {
             Debug.Log(fitness);
 			resetVehicle();
 			dead = true;
+		}
+		if(Time.time - startTime > 15) {
+			Debug.Log("took to long");
+			dead = true;
+			resetVehicle();
 		}
 	}
 	public void turnLeft() {
@@ -123,7 +128,7 @@ public class vehicleCtl : MonoBehaviour {
         {
             segment = 0;
 			startTime = Time.time;
-			started = false;
+			//started = false;
 			if (isAi)
             {
 				Debug.Log("calling evolution manager");
