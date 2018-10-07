@@ -13,7 +13,6 @@ public class checkpointNum : MonoBehaviour {
 	private float fitTime;
 	private float fitSpeed;
 	public float fitness;
-	private bool dontRecord;
 	private GameObject fitnessText;
 	void Start() {
 		coll = this.GetComponent<Collider2D>();
@@ -21,34 +20,29 @@ public class checkpointNum : MonoBehaviour {
 	}
 	void Update()
 	{
-		dontRecord = false;
 		if (vehicle.GetComponent<vehicleCtl>().newSeg && vehicle.GetComponent<vehicleCtl>().segment == checkPoint-1)
 		{
-			Debug.Log("ENTERED SEGMENT");
+			//Debug.Log("ENTERED SEGMENT");
 			distance2D = coll.Distance(vehicle.GetComponent<Collider2D>());
 		}
-		if (vehicle.GetComponent<vehicleCtl>().dead && vehicle.GetComponent<vehicleCtl>().segment == checkPoint-1)
+		if (vehicle.GetComponent<vehicleCtl>().dead && vehicle.GetComponent<vehicleCtl>().segment == checkPoint - 1 && vehicle.GetComponent<vehicleCtl>().noSave == false)
 		{
 			fitDist = 1 - (curDist / distance2D.distance);
+			if(fitDist < 0) {
+				fitDist = 0;
+			}
 			fitDist = fitDist + checkPoint-1;
 			fitTime = Time.time - vehicle.GetComponent<vehicleCtl>().startTime;
 			//Debug.Log(fitDist);
 			//Debug.Log(fitTime);
 			fitSpeed = fitDist/fitTime;
-			fitness = fitSpeed * fitDist*fitDist;
-			fitnessText.GetComponent<updateFitnessDisp>().updateDisp(fitness);
+			fitness = fitSpeed * fitDist * fitDist;
+			if(fitness < 0) {
+				fitness = 0;
+			}
 			Debug.Log(fitness);
-			if((fitness > 100 && checkPoint < 6) || fitness < 0) {
-				dontRecord = true;
-				Debug.Log("NOT RECORDING VALUE");
-			}
-			if (!dontRecord)
-			{
-				writetofile.append(fitness.ToString(), "_fitnessScores");
-			}
-			else {
-				writetofile.append("null", "_fitnessScores");
-			}
+			fitnessText.GetComponent<updateFitnessDisp>().updateDisp(fitness);
+			writetofile.append(fitness.ToString(), "_fitnessScores");
 		}
 		if (vehicle.GetComponent<vehicleCtl>().segment == checkPoint - 1)
         {

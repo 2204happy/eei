@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class updateFitnessDisp : MonoBehaviour {
 	public Text text;
-
-	public void updateDisp(float fitness) {
-		text.text = "Last Fitness: " + fitness.ToString();
-		Debug.Log("gothereatleast");
+	public float fitness;
+	public void updateDisp(float fitnessNew) {
+		text.text = "Last Fitness: " + fitnessNew.ToString();
+		fitness = fitnessNew;
 	}
 }

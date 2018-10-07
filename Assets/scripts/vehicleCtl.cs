@@ -24,10 +24,14 @@ public class vehicleCtl : MonoBehaviour {
     public float fitness;
 	public int checkpointAmnt;
 	public GameObject fitnessText;
-	public bool player;
 	private bool started;
+	public bool noSave;
+	public bool isAi;
+	public neuralnetwork neuralNetwork;
+	public evolutionManager evolutionManager;
 	// Use this for initialization
 	void Start () {
+		noSave = false;
 		objSelf = this.gameObject;
 		speed = 0;
 		initPos = objSelf.transform.position;
@@ -120,12 +124,16 @@ public class vehicleCtl : MonoBehaviour {
             segment = 0;
 			startTime = Time.time;
 			started = false;
+			if (isAi)
+            {
+				Debug.Log("calling evolution manager");
+				evolutionManager.nextAttempt();
+            }
         }
 		dead = false;
 		newSeg = false;
 	}
 	public void resetVehicle() {
-		
 		objSelf.transform.position = initPos;
         speed = 0;
         objSelf.transform.rotation = initRot;
@@ -133,5 +141,6 @@ public class vehicleCtl : MonoBehaviour {
         fitTime = 0;
         fitSpeed = 0;
         fitness = 0;
+
 	}
 }

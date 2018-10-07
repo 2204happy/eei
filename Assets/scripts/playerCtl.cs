@@ -8,7 +8,6 @@ public class playerCtl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		objSelf = this.gameObject;
-		objSelf.GetComponent<vehicleCtl>().player = true;
 	}
 	
 	// Update is called once per frame

@@ -282,6 +282,7 @@ MonoBehaviour:
   angle: 45
   straight: 0
   pointingLeft: 1
+  findist: 0
 --- !u!114 &114215927035729578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +297,7 @@ MonoBehaviour:
   angle: 45
   straight: 0
   pointingLeft: 0
+  findist: 0
 --- !u!114 &114293683774606728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,6 +312,7 @@ MonoBehaviour:
   angle: 22.5
   straight: 0
   pointingLeft: 0
+  findist: 0
 --- !u!114 &114507378058429454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +337,11 @@ MonoBehaviour:
   startTime: 0
   fitness: 0
   checkpointAmnt: 16
+  fitnessText: {fileID: 0}
+  noSave: 0
+  isAi: 1
+  neuralNetwork: {fileID: 0}
+  evolutionManager: {fileID: 0}
 --- !u!114 &114561851361722662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,6 +356,7 @@ MonoBehaviour:
   angle: 0
   straight: 1
   pointingLeft: 0
+  findist: 0
 --- !u!114 &114756228823102816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,6 +382,7 @@ MonoBehaviour:
   angle: 22.5
   straight: 0
   pointingLeft: 1
+  findist: 0
 --- !u!212 &212006470713651468
 SpriteRenderer:
   m_ObjectHideFlags: 1
